@@ -1,39 +1,102 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <title>أول برنامج لي</title>
+  <meta charset="UTF-8">
+  <title>موقعي الأول</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background-image: url('bg.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
+    /* القائمة */
+    nav {
+      background: rgba(0,0,0,0.7);
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      margin: 0 15px;
+      cursor: pointer;
+    }
+
+    nav button:hover {
+      text-decoration: underline;
+    }
+
+    /* المحتوى */
+    .content {
+      background: rgba(0,0,0,0.6);
+      margin: 60px auto;
+      padding: 30px;
+      width: 80%;
+      max-width: 500px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .content button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body style="
-text-align:center;
-font-family:Arial;
-margin-top:50px;
-background-image:url('https://picsum.photos/1200/800');
-background-size:cover;
-background-repeat:no-repeat;
-background-position:center;
-color:white;
-">
-    <h1>أهلاً بك 👋</h1>
 
-    <input id="name" placeholder="اكتب اسمك">
-    <br><br>
+<body>
 
-    <button onclick="sayHello()" style="padding:10px 20px; font-size:16px; background-color:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer;">
-        اضغط هنا
-    </button>
+  <!-- القائمة -->
+  <nav>
+    <button onclick="showHome()">الرئيسية</button>
+    <button onclick="showAbout()">عن الموقع</button>
+    <button onclick="showContact()">تواصل معنا</button>
+  </nav>
 
-    <h2 id="result"></h2>
+  <!-- المحتوى -->
+  <div class="content" id="box">
+    <h2>أهلًا في موقعي 👋</h2>
+    <p>هذا أول موقع أعمله بنفسي</p>
+    <button onclick="sayHello()">اضغطني</button>
+  </div>
 
-    <script>
-        function sayHello() {
-            let name = document.getElementById("name").value;
-            let result = document.getElementById("result");
-            result.innerText = "تشرفنا يا " + name + " 🎉";
-            result.style.color = "#ff4500"; // لون الترحيب أحمر برتقالي
-            result.style.fontSize = "20px";
-        }
-    </script>
+  <script>
+    function showHome() {
+      document.getElementById("box").innerHTML = `
+        <h2>الصفحة الرئيسية</h2>
+        <p>أهلاً وسهلاً في موقعي</p>
+        <button onclick="sayHello()">اضغطني</button>
+      `;
+    }
+
+    function showAbout() {
+      document.getElementById("box").innerHTML = `
+        <h2>عن الموقع</h2>
+        <p>هذا موقع بسيط للتجربة والتعلّم</p>
+      `;
+    }
+
+    function showContact() {
+      document.getElementById("box").innerHTML = `
+        <h2>تواصل معنا</h2>
+        <p>📧 email@example.com</p>
+      `;
+    }
+
+    function sayHello() {
+      alert("أهلاً فيك! 😄");
+    }
+  </script>
 
 </body>
 </html>

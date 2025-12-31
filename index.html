@@ -53,9 +53,7 @@ nav button {
   text-align: right;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+
 
 /* ===== المحتوى ===== */
 .content {
@@ -93,9 +91,9 @@ form button {
 <nav>
   <button onclick="showHome()">الرئيسية</button>
 
-  <div class="dropdown">
-    <button>القائمة ⬇</button>
-    <div class="dropdown-content">
+ <div class="dropdown">
+  <button onclick="toggleMenu()">القائمة ⬇</button>
+  <div class="dropdown-content" id="menu">
       <button onclick="showAbout()">عن الموقع</button>
       <button onclick="showForm()">تسجيل</button>
       <button onclick="goPage2()">صفحة ثانية</button>
@@ -127,12 +125,12 @@ function showAbout() {
 function showForm() {
   box.innerHTML = `
     <h2>تسجيل</h2>
-    <form onsubmit="register(event)">
-      <input type="text" placeholder="الاسم" required>
-      <input type="email" placeholder="الإيميل" required>
-      <input type="password" placeholder="كلمة المرور" required>
-      <button type="submit">تسجيل</button>
-    </form>
+    <form action="https://formspree.io/f/mlgdeweb" method="POST">
+  <input type="text" name="name" placeholder="الاسم" required>
+  <input type="email" name="email" placeholder="الإيميل" required>
+  <input type="password" name="password" placeholder="كلمة المرور" required>
+  <button type="submit">تسجيل</button>
+</form>
   `;
 }
 
@@ -144,6 +142,16 @@ function register(e) {
 function goPage2() {
   window.location.href = "page2.html";
 }
+
+function toggleMenu() {
+  const menu = document.getElementById("menu");
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "block";
+  }
+}
+
 </script>
 
 </body>

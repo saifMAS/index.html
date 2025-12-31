@@ -8,15 +8,15 @@
     body {
       margin: 0;
       font-family: Arial;
-      background-image: url('bg.jpg');
+      background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413');
       background-size: cover;
       background-position: center;
+      transition: background 0.5s ease;
       color: white;
     }
 
-    /* القائمة */
     nav {
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.75);
       padding: 15px;
       text-align: center;
     }
@@ -31,18 +31,17 @@
     }
 
     nav button:hover {
-      text-decoration: underline;
+      color: #ffd700;
     }
 
-    /* المحتوى */
     .content {
-      background: rgba(0,0,0,0.6);
-      margin: 60px auto;
+      background: rgba(0,0,0,0.65);
+      margin: 70px auto;
       padding: 30px;
       width: 80%;
       max-width: 500px;
       text-align: center;
-      border-radius: 10px;
+      border-radius: 15px;
     }
 
     .content button {
@@ -50,6 +49,8 @@
       font-size: 16px;
       margin-top: 15px;
       cursor: pointer;
+      border-radius: 8px;
+      border: none;
     }
   </style>
 </head>
@@ -67,37 +68,45 @@
   <div class="content" id="box">
     <h2>أهلًا في موقعي 👋</h2>
     <p>هذا أول موقع أعمله بنفسي</p>
-    <button onclick="sayHello()">اضغطني</button>
+    <button onclick="changeBackground()">غيّر الخلفية</button>
   </div>
 
   <script>
+    const images = [
+      "https://images.unsplash.com/photo-1503264116251-35a269479413",
+      "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+    ];
+
+    let current = 0;
+
+    function changeBackground() {
+      current = (current + 1) % images.length;
+      document.body.style.backgroundImage = `url('${images[current]}')`;
+    }
+
     function showHome() {
       document.getElementById("box").innerHTML = `
         <h2>الصفحة الرئيسية</h2>
-        <p>أهلاً وسهلاً في موقعي</p>
-        <button onclick="sayHello()">اضغطني</button>
+        <p>أهلاً وسهلاً في الموقع</p>
+        <button onclick="changeBackground()">غيّر الخلفية</button>
       `;
     }
 
     function showAbout() {
       document.getElementById("box").innerHTML = `
         <h2>عن الموقع</h2>
-        <p>هذا موقع بسيط للتجربة والتعلّم</p>
+        <p>هذا موقع بسيط للتعلّم والتجربة</p>
       `;
     }
 
     function showContact() {
       document.getElementById("box").innerHTML = `
         <h2>تواصل معنا</h2>
-        <p>📧 saifratb2005@gmail.com</p>
+        <p>📧  saifratb2005@gmail.com</p>
       `;
-    }
-
-    function sayHello() {
-      alert("أهلاً فيك! 😄");
     }
   </script>
 
 </body>
-
 </html>

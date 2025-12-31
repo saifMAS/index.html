@@ -1,112 +1,150 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>موقعي الأول</title>
+<meta charset="UTF-8">
+<title>موقعي المتكامل</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413');
-      background-size: cover;
-      background-position: center;
-      transition: background 0.5s ease;
-      color: white;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
 
-    nav {
-      background: rgba(0,0,0,0.75);
-      padding: 15px;
-      text-align: center;
-    }
+/* ===== القائمة ===== */
+nav {
+  background: rgba(0,0,0,0.8);
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
-    nav button {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 18px;
-      margin: 0 15px;
-      cursor: pointer;
-    }
+nav button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
 
-    nav button:hover {
-      color: #ffd700;
-    }
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
 
-    .content {
-      background: rgba(0,0,0,0.65);
-      margin: 70px auto;
-      padding: 30px;
-      width: 80%;
-      max-width: 500px;
-      text-align: center;
-      border-radius: 15px;
-    }
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: black;
+  top: 35px;
+  min-width: 150px;
+}
 
-    .content button {
-      padding: 10px 20px;
-      font-size: 16px;
-      margin-top: 15px;
-      cursor: pointer;
-      border-radius: 8px;
-      border: none;
-    }
-  </style>
+.dropdown-content button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: right;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* ===== المحتوى ===== */
+.content {
+  background: rgba(0,0,0,0.7);
+  margin: 40px auto;
+  padding: 25px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+/* ===== النموذج ===== */
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: none;
+}
+
+form button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- القائمة -->
-  <nav>
-    <button onclick="showHome()">الرئيسية</button>
-    <button onclick="showAbout()">عن الموقع</button>
-    <button onclick="showContact()">تواصل معنا</button>
-  </nav>
+<!-- ===== القائمة ===== -->
+<nav>
+  <button onclick="showHome()">الرئيسية</button>
 
-  <!-- المحتوى -->
-  <div class="content" id="box">
-    <h2>أهلًا في موقعي 👋</h2>
-    <p>هذا أول موقع أعمله بنفسي</p>
-    <button onclick="changeBackground()">غيّر الخلفية</button>
+  <div class="dropdown">
+    <button>القائمة ⬇</button>
+    <div class="dropdown-content">
+      <button onclick="showAbout()">عن الموقع</button>
+      <button onclick="showForm()">تسجيل</button>
+      <button onclick="goPage2()">صفحة ثانية</button>
+    </div>
   </div>
+</nav>
 
-  <script>
-    const images = [
-      "https://images.unsplash.com/photo-1503264116251-35a269479413",
-      "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d",
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
-    ];
+<!-- ===== المحتوى ===== -->
+<div class="content" id="box">
+  <h2>أهلًا في موقعي 👋</h2>
+  <p>هذا موقع كامل مبني بـ HTML و CSS و JavaScript</p>
+</div>
 
-    let current = 0;
+<script>
+function showHome() {
+  box.innerHTML = `
+    <h2>الصفحة الرئيسية</h2>
+    <p>مرحبًا في الموقع</p>
+  `;
+}
 
-    function changeBackground() {
-      current = (current + 1) % images.length;
-      document.body.style.backgroundImage = `url('${images[current]}')`;
-    }
+function showAbout() {
+  box.innerHTML = `
+    <h2>عن الموقع</h2>
+    <p>هذا موقع تدريبي لتعلّم البرمجة</p>
+  `;
+}
 
-    function showHome() {
-      document.getElementById("box").innerHTML = `
-        <h2>الصفحة الرئيسية</h2>
-        <p>أهلاً وسهلاً في الموقع</p>
-        <button onclick="changeBackground()">غيّر الخلفية</button>
-      `;
-    }
+function showForm() {
+  box.innerHTML = `
+    <h2>تسجيل</h2>
+    <form onsubmit="register(event)">
+      <input type="text" placeholder="الاسم" required>
+      <input type="email" placeholder="الإيميل" required>
+      <input type="password" placeholder="كلمة المرور" required>
+      <button type="submit">تسجيل</button>
+    </form>
+  `;
+}
 
-    function showAbout() {
-      document.getElementById("box").innerHTML = `
-        <h2>عن الموقع</h2>
-        <p>هذا موقع بسيط للتعلّم والتجربة</p>
-      `;
-    }
+function register(e) {
+  e.preventDefault();
+  alert("تم التسجيل بنجاح ✅");
+}
 
-    function showContact() {
-      document.getElementById("box").innerHTML = `
-        <h2>تواصل معنا</h2>
-        <p>📧  saifratb2005@gmail.com</p>
-      `;
-    }
-  </script>
+function goPage2() {
+  window.location.href = "page2.html";
+}
+</script>
 
 </body>
 </html>

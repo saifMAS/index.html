@@ -4,20 +4,57 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Creative Lab | MODREN AGE SYMBOL</title>
-<style>/* نفس التنسيقات من mas-platform.html */</style>
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#0f172a;
+  color:white;
+  text-align:center;
+}
+.navbar {
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+  background:rgba(2,6,23,0.9);
+  position:sticky;
+  top:0;
+}
+.nav-logo {color:#38bdf8;font-weight:bold;font-size:22px;}
+.nav-links a {color:#e5e7eb;margin-left:20px;text-decoration:none;}
+.nav-links a:hover {color:#38bdf8;}
+section {padding:60px 20px;}
+h1{font-size:36px;color:#38bdf8;}
+p{max-width:700px;margin:auto;line-height:1.6;color:#d1d5db;}
+.cta-button {
+  display:inline-block;padding:12px 28px;margin-top:20px;
+  background:#38bdf8;color:#0f172a;font-weight:bold;
+  border-radius:8px;text-decoration:none;
+  transition: transform 0.3s, background 0.3s;
+}
+.cta-button:hover {transform:scale(1.05); background:#0ea5e9;}
+section:hover {
+  box-shadow: 0 0 40px rgba(56,189,248,0.15);
+  transition: 0.4s;
+}
+</style>
 </head>
 <body>
 <nav class="navbar">
   <div class="nav-logo">MAS</div>
-  <div class="nav-links">
-    <a href="../index.html" data-en="Home" data-ar="الرئيسية">Home</a>
-    <a href="#about" data-en="About Project" data-ar="عن المشروع">About Project</a>
-    <a href="#contact" data-en="Contact" data-ar="تواصل">Contact</a>
-  </div>
+<div class="nav-links">
+  <a href="../index.html">Home</a>
+  <a href="#about">About</a>
+  <a href="#features">Features</a>
+  <a href="#contact">Apply</a>
+</div>
 </nav>
 
 <section id="hero">
   <h1 data-en="Creative Lab" data-ar="مختبر الإبداع">Creative Lab</h1>
+  <p style="color:#9ca3af; font-size:14px;">
+Creative Design & Branding Division of MODREN AGE SYMBOL
+</p>
   <p data-en="Design, branding, and UI/UX by MAS team."
      data-ar="التصميم، الهوية البصرية وتجربة المستخدم من فريق MAS.">
      Design, branding, and UI/UX by MAS team.
@@ -33,12 +70,31 @@
   </p>
 </section>
 
-<section id="contact">
-  <h2 data-en="Contact / Apply" data-ar="تواصل / تقديم">Contact / Apply</h2>
-  <p data-en="Email us at:" data-ar="راسلنا عبر البريد الإلكتروني:">
-    Email us at: <a href="mailto:contact@modrenagesymbol.com">contact@modrenagesymbol.com</a>
+ <section id="services">
+  <h2 data-en="What We Do" data-ar="ماذا نقدم">What We Do</h2>
+
+  <p data-en="Brand Identity Design" data-ar="تصميم الهوية البصرية">✔ Brand Identity Design</p>
+  <p data-en="UI / UX Design" data-ar="تصميم واجهات وتجربة المستخدم">✔ UI / UX Design</p>
+  <p data-en="Creative Direction" data-ar="الإخراج الإبداعي">✔ Creative Direction</p>
+  <p data-en="Visual Systems" data-ar="الأنظمة البصرية">✔ Visual Systems</p>
+
+</section>
+<section id="why">
+  <h2>Why MAS?</h2>
+  <p>
+    MAS combines creativity, technology, and modern thinking
+    to deliver real impact and long-term value.
   </p>
-  <a href="mailto:contact@modrenagesymbol.com" class="cta-button" data-en="Apply to MAS" data-ar="التقديم إلى MAS">Apply to MAS</a>
+</section>
+<section id="cta">
+  <h2>Interested?</h2>
+  <p data-en="Let’s craft bold visual identities together."
+   data-ar="لنصنع هويات بصرية جريئة معًا.">
+Let’s craft bold visual identities together.
+</p>
+  <a href="../index.html#contact" class="cta-button">
+    Contact MAS
+  </a>
 </section>
 
 <footer>

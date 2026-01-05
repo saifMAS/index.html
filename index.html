@@ -534,6 +534,7 @@ Core technology platform developed by MAS
 </p>
 <!-- NEW -->
   <span class="status">Coming Soon</span>
+   
  <a href="projects/mas-platform.html" class="explore-btn">Explore</a>
     </div>
 
@@ -601,8 +602,7 @@ sections.forEach(section => observer.observe(section));
 
     <h2>Apply to MAS</h2>
 <form 
-  action="https://formspree.io/f/mojvdlgn" 
-  method="POST"
+  
   id="contactForm">
 
   <input 
@@ -662,17 +662,7 @@ popup.onclick = (e) => {
   if (e.target === popup) popup.style.display = "none";
 };
 </script>
-<script>
-const form = document.getElementById("contactForm");
-const successMsg = document.getElementById("successMessage");
 
-form.addEventListener("submit", function () {
-  setTimeout(() => {
-    form.style.display = "none";
-    successMsg.style.display = "block";
-  }, 800);
-});
-</script>
 <script>
 const toggleBtn = document.getElementById("lang-toggle");
 const content = document.getElementById("page-content");
@@ -697,7 +687,9 @@ toggleBtn.addEventListener("click", () => {
   }
 });
 </script>
-
-
+<script> const form = document.getElementById("contactForm"); const successMsg = document.getElementById("successMessage"); form.addEventListener("submit", async (e) => { e.preventDefault(); // يمنع الصفحة من إعادة التحميل 
+ const formData = { name: form.name.value, email: form.email.value, message: form.message.value, };
+  try { const res = await fetch("/api/apply", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(formData), }); const data = await res.json(); console.log(data.message); form.style.display = "none"; successMsg.style.display = "block"; } catch (err) { console.error("Error:", err); } }); 
+</script>
 </body>
 </html>

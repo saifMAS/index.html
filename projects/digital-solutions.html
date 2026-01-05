@@ -61,7 +61,57 @@ Digital Services Division of MODREN AGE SYMBOL
   </p>
   <a href="#contact" class="cta-button" data-en="Apply Now" data-ar="قدّم الآن">Apply Now</a>
 </section>
+<!-- Popup -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <span class="close-btn" id="closePopup">×</span>
 
+    <h2>Apply to MAS</h2>
+<form 
+  action="https://formspree.io/f/mojvdlgn" 
+  method="POST"
+  id="contactForm">
+
+  <input 
+    type="text"
+    name="name"
+    data-en-placeholder="Your Name"
+    data-ar-placeholder="الاسم"
+    placeholder="Your Name"
+    required
+  >
+
+  <input 
+    type="email"
+    name="email"
+    data-en-placeholder="Your Email"
+    data-ar-placeholder="البريد الإلكتروني"
+    placeholder="Your Email"
+    required
+  >
+
+  <textarea
+    name="message"
+    data-en-placeholder="Write your message"
+    data-ar-placeholder="اكتب رسالتك"
+    placeholder="Write your message"
+    required
+  ></textarea>
+
+  <button 
+    type="submit"
+    class="cta-button"
+    data-en="Send"
+    data-ar="إرسال">
+    Send
+  </button>
+
+</form>
+<div id="successMessage" style="display:none;">
+  Your message has been sent successfully. We will contact you soon.
+</div>
+  </div>
+</div>
 <section id="about">
   <h2 data-en="About Digital Solutions" data-ar="عن الحلول الرقمية">About Digital Solutions</h2>
   <p data-en="Providing smart and innovative solutions to optimize digital business processes."

@@ -58,7 +58,56 @@ Technology Division of MODREN AGE SYMBOL
   <p>Core technology platform developed by MAS. This platform is designed for modern startups and innovative projects.</p>
   <a href="#contact" class="cta-button">Apply Now</a>
 </section>
+<!-- Popup -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <span class="close-btn" id="closePopup">×</span>
 
+    <h2>Apply to MAS</h2>
+<form 
+  
+  id="contactForm">
+
+  <input 
+    type="text"
+    name="name"
+    data-en-placeholder="Your Name"
+    data-ar-placeholder="الاسم"
+    placeholder="Your Name"
+    required
+  >
+
+  <input 
+    type="email"
+    name="email"
+    data-en-placeholder="Your Email"
+    data-ar-placeholder="البريد الإلكتروني"
+    placeholder="Your Email"
+    required
+  >
+
+  <textarea
+    name="message"
+    data-en-placeholder="Write your message"
+    data-ar-placeholder="اكتب رسالتك"
+    placeholder="Write your message"
+    required
+  ></textarea>
+
+  <button 
+    type="submit"
+    class="cta-button"
+    data-en="Send"
+    data-ar="إرسال">
+    Send
+  </button>
+
+</form>
+<div id="successMessage" style="display:none;">
+  Your message has been sent successfully. We will contact you soon.
+</div>
+  </div>
+</div>
 <section id="about">
   <h2>About MAS Platform</h2>
   <p>This project is the backbone of MAS technology. It integrates modern web development practices, scalable architecture, and smart solutions for businesses.</p>
@@ -78,6 +127,13 @@ Technology Division of MODREN AGE SYMBOL
 </section>
 <section id="contact">
   <h2>Contact / Apply</h2>
+   <button 
+    class="cta-button glow-btn"
+    id="openPopup"
+    data-en="Apply to MAS"
+    data-ar="التقديم إلى MAS">
+    Apply to MAS
+  </button>
   <p>Email us at: <a href="mailto:contact@modrenagesymbol.com">contact@modrenagesymbol.com</a></p>
 <a href="../index.html#contact" class="cta-button">
 Contact MAS
@@ -87,6 +143,57 @@ Contact MAS
 <footer>
   <p>© 2026 MODREN AGE SYMBOL — All rights reserved</p>
 </footer>
+<script>
+const openBtn = document.getElementById("openPopup");
+const closeBtn = document.getElementById("closePopup");
+const popup = document.getElementById("popup");
 
+openBtn.onclick = () => popup.style.display = "flex";
+closeBtn.onclick = () => popup.style.display = "none";
+
+popup.onclick = (e) => {
+  if (e.target === popup) popup.style.display = "none";
+};
+</script>
+<script>
+const form = document.getElementById("contactForm");
+const successMsg = document.getElementById("successMessage");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault(); // يمنع الصفحة تعيد تحميل
+
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value
+  };
+
+  fetch("/api/apply", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(resp => {
+    form.style.display = "none";
+    successMsg.style.display = "block";
+  })
+  .catch(err => console.error(err));
+});
+</script>
+<script>
+fetch("/api/apply", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    project: "mas-platform",
+    name: document.querySelector('[name="name"]').value,
+    email: document.querySelector('[name="email"]').value,
+    message: document.querySelector('[name="message"]').value
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data.message));
+</script>
 </body>
 </html>
